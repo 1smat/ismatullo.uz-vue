@@ -4,7 +4,7 @@
 
         <div class="about__container bd-grid">
             <div class="about__img">
-                <img src="assets/img/about.jpg" alt="" />
+                <img src="../assets/img/about.jpg" alt="" />
             </div>
 
             <div>
