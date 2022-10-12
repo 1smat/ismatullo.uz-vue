@@ -7,7 +7,7 @@
                 Engineer
             </h1>
 
-            <a href="#" class="button">Contact</a>
+            <a href="#contact" class="button">Contact</a>
         </div>
 
         <div class="home__social">

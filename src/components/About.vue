@@ -1,12 +1,10 @@
 <template>
     <section class="about section" id="about">
         <h2 class="section-title">About</h2>
-
         <div class="about__container bd-grid">
             <div class="about__img">
                 <img src="../assets/img/about.jpg" alt="" />
             </div>
-
             <div>
                 <h2 class="about__subtitle">I'm Ismatullo</h2>
                 <p class="about__text">

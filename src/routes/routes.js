@@ -1,7 +1,6 @@
-const routes = [
-    {
+const routes = [{
         name: 'Home',
-        scroll: '#',
+        scroll: '#home',
     },
     {
         name: 'About',
