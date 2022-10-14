@@ -536,3 +536,8 @@ img {
 }
 
 /*# sourceMappingURL=styles.css.map */
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
