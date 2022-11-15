@@ -8,6 +8,19 @@ const navToggle = ref(null)
 const navMenu = ref(null)
 
 onMounted(() => {
+    /*===== SCROLL REVEAL ANIMATION =====*/
+    const sr = ScrollReveal({
+        origin: 'top',
+        distance: '100px',
+        duration: 1400,
+        delay: 10
+        //     reset: true
+    })
+    sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text', {})
+    sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img', {})
+    sr.reveal('.home__social-icon', {})
+    sr.reveal('.skills__data, .work__img, .contact__input', {})
+
     function showMenu() {
         const toggle = navToggle.value
         const nav = navMenu.value
@@ -27,7 +40,7 @@ onMounted(() => {
         const navMenu = document.getElementById('nav-menu')
         // When we click on each nav__link, we remove the show-menu class
         navMenu.classList.remove('show')
-        document.body.classList.toggle('stop-scrolling')
+        document.body.classList.remove('stop-scrolling')
     }
     navLink.forEach((n) => n.addEventListener('click', linkAction))
 
@@ -42,36 +55,15 @@ onMounted(() => {
             const sectionTop = current.offsetTop - 50
             const sectionId = current.getAttribute('id')
 
-            // console.log(current, "cureent")
-
             if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                document
-                    .querySelector(`.nav__menu a[href*="${sectionId}"]`)
-                    .classList.add('active')
+                document.querySelector(`.nav__menu a[href*="${sectionId}"]`).classList.add('active')
+                // document.body.style.overflow = 'auto'
             } else {
-                document
-                    .querySelector(`.nav__menu a[href*="${sectionId}"]`)
-                    .classList.remove('active')
+                document.querySelector(`.nav__menu a[href*="${sectionId}"]`).classList.remove('active')
             }
         })
     }
     window.addEventListener('scroll', scrollActive)
-
-    /*===== SCROLL REVEAL ANIMATION =====*/
-    const sr = ScrollReveal({
-        origin: 'top',
-        distance: '60px',
-        duration: 2000,
-        delay: 200,
-        //     reset: true
-    })
-
-    sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text', {})
-    sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img', {
-        delay: 400,
-    })
-    sr.reveal('.home__social-icon', { interval: 200 })
-    sr.reveal('.skills__data, .work__img, .contact__input', { interval: 200 })
 })
 </script>
 <template>
@@ -83,20 +75,12 @@ onMounted(() => {
 
             <div class="nav__menu" id="nav-menu" ref="navMenu">
                 <ul class="nav__list">
-                    <li
-                        class="nav__item"
-                        v-for="route in routes"
-                        :key="route.name"
-                    >
-                        <a
-                            :href="route.scroll"
-                            @click="setActive"
-                            :class="
-                                route.name === 'Home'
-                                    ? 'nav__link active'
-                                    : 'nav__link'
-                            "
-                        >
+                    <li class="nav__item" v-for="route in routes" :key="route.name">
+                        <a :href="route.scroll" @click="setActive" :class="
+                            route.name === 'Home'
+                                ? 'nav__link active'
+                                : 'nav__link'
+                        ">
                             {{ route.name }}
                         </a>
                     </li>

@@ -1,4 +1,5 @@
-const routes = [{
+const routes = [
+    {
         name: 'Home',
         scroll: '#home',
     },
